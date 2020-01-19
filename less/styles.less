@@ -1,4 +1,11 @@
-@color-orange: #c5ac86;
+// variables
+@background-color: #f4f4f4;
+@text-color: rgb(175, 120, 120);
+@font-family: Tahoma;
+@primary-color: #3b5998;
+@secondary-color: #20b2aa;
+@line-height: 1em+1em;
+@padding-default: 5px;
 
 body,
 html {
@@ -10,6 +17,76 @@ html {
 }
 
 body {
+	font-family: @font-family;
+	line-height: @line-height;
+	color: @text-color;
+	background-color: @background-color;
+}
+
+main {
+	padding: @padding-default;
+	background-color: @primary-color;
+}
+
+section {
+	background-color: rgb(207, 218, 63);
+	padding: @padding-default;
+}
+
+ul#menu {
+	background-color: lighten(@secondary-color, 25%);
+
+	li {
+		list-style-type: none;
+
+		a {
+			text-decoration: none;
+			color: darken(@text-color, 25%);
+			cursor: pointer;
+		}
+	}
+}
+
+
+
+h1 {
+	.bordered
+}
+
+.primary-text {
+	color: @primary-color;
+}
+
+.btn {
+	border: none;
 	color: white;
-	background-color: @color-orange;
+	padding: 10px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
+.text-color(@a) when (lightness(@a) <=50%) {
+	color: black;
+}
+
+.text-color(@a) when (lightness(@a) >=50%) {
+	color: white;
+}
+
+.primary-btn:extend(.btn) {
+	background-color: @secondary-color;
+	.text-color(@secondary-color);
+}
+
+.bordered {
+	border-top: dotted 1px #000;
+	border-bottom: dotted 1px #000;
+	background-color: @secondary-color;
+	width: 25%;
+}
+
+.border-radius(@radius) {
+	border-radius: @radius;
 }

@@ -1,7 +1,5 @@
 const gulp = require('gulp');
 const less = require('gulp-less');
-var path = require('path');
-const gulpautoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
 const watchPaths = { less: './less/**/*.less', html: './*.html', js: './js/*.js' };
 
@@ -10,8 +8,7 @@ function style() {
 	return (
 		gulp
 			.src(watchPaths.less)
-			.pipe(less().on('error', handleError) /*.on('error', less.logError) */)
-			// .pipe(gulpautoprefixer({ browsers: [ 'last 2 versions', '>5%' ] }))
+			.pipe(less().on('error', handleError))
 			.pipe(gulp.dest('./css'))
 			.pipe(browserSync.stream())
 	);
